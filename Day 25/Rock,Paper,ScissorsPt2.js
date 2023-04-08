@@ -64,7 +64,7 @@ function playGame(player1, player2, playUntil) {            // **Pt2** 1. Define
         else if (overallWinner.name === player2.name) {Player2Score++;};
     }
     if (Player1Score === playUntil) {           // **Pt2** When one player has won enough games, return the winning player object // **Pt2** Play a game to 3 wins
-        return player1;         
+        return player1;
     }else{
         return player2;
     };
@@ -76,7 +76,7 @@ function playTournament(player1, player2, player3, player4, playUntil) {        
     return FinalRound;
 };
 
-let FinalRound = playTournament(player1, player2, player3, player4, 2)
+let FinalRound = playTournament(player1, player2, player3, player4)
 console.log(FinalRound.name + " is the World Champion!!!");             // **Pt2** Announce the tournament winner's name "[name] is the world champion";
 
 
