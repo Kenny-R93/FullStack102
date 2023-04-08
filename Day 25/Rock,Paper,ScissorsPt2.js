@@ -57,35 +57,28 @@ function playGame(player1, player2, playUntil) {            // **Pt2** 1. Define
     let Player1Score = 0;
     let Player2Score = 0;
 
-    while (Player1Score < playUntil || Player2Score < playUntil) {
+    while (Player1Score < playUntil || Player2Score < playUntil) {          // **Pt2** Play rounds until one of the players wins playUntil hands
         let overallWinner = playRound(player1, player2);
         if (overallWinner === null) {}
         else if (overallWinner.name === player1.name) {Player1Score++;}
         else if (overallWinner.name === player2.name) {Player2Score++;};
     }
-    if (Player1Score === playUntil) {
-        return player1;
+    if (Player1Score === playUntil) {           // **Pt2** When one player has won enough games, return the winning player object // **Pt2** Play a game to 3 wins
+        return player1;         
     }else{
         return player2;
     };
 };
-function playTournament(player1, player2, player3, player4, playUntil) {
-    let Round1 = playGame(player1, player2, playUntil);
-    let Round2 = playGame(player3, player4, playUntil);
+function playTournament(player1, player2, player3, player4, playUntil) {            // **Pt2** Define a function called playTournament() // Take 4 players and playUntil as arguments
+    let Round1 = playGame(player1, player2, playUntil);             // **Pt2** Play a game between the first two players, and the second two players
+    let Round2 = playGame(player3, player4, playUntil);             // **Pt2** Play a game between the winners of the first round.
     let FinalRound = playGame(Round1, Round2, playUntil);
     return FinalRound;
 };
 
 let FinalRound = playTournament(player1, player2, player3, player4, 2)
-console.log(FinalRound.name + " is the World Champion!!!");
+console.log(FinalRound.name + " is the World Champion!!!");             // **Pt2** Announce the tournament winner's name "[name] is the world champion";
 
 
-// Define a function called playGame() that takes arguments player1, player2, and playUntil.
-// Play rounds until one of the players wins playUntil hands
-// When one player has won enough games, return the winning player object
-// Play a game to 3 wins
-// Define a function called playTournament()
-// Take 4 players and playUntil as arguments
-// Play a game between the first two players, and the second two players
-// Play a game between the winners of the first round.
-// Announce the tournament winner's name "[name] is the world champion";
+
+
