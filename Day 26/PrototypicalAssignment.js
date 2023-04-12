@@ -25,11 +25,11 @@ Person.prototype.addToFamily = function(FamMember) {
     if(FamMember instanceof Person && !this.family.includes(FamMember)) {
         this.family.push(FamMember);
     }
-        console.log(this.family);
     return this.family.length;
     };
 // Test this using several console logs for properties and methods.
 
+// console.log(this.family);
 let Kenny = new Person("Kenny", "McCormick", "Orange", 7, ["Tacos","Pizza"]);
 let Stan = new Person("Stan", "McCormick", "Blue", 13, ["Pizza","French Fries",]);
 let Kyle = new Person("Kyle", "McCormick", "Green", 10, ["Pizza","Chicken Nuggets"]);
@@ -42,7 +42,7 @@ console.log(Kenny.toString())
 console.log(Kenny.addToFamily(Stan))
 console.log(Kenny.addToFamily(Kyle))
 console.log(Kenny.addToFamily(Eric))
-console.log(Kenny.famly)
+console.log(Kenny.family)
 
 console.log(Kenny instanceof Person)
 console.log(Stan instanceof Person)
