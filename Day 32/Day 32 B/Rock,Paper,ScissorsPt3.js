@@ -1,7 +1,7 @@
 const hands = ['rock', 'paper', 'scissors'];
 
 function getHand() {
-  // Define a function called getHand() that returns a hand from the array using parseInt(Math.random()*10)%3
+  
   return hands[parseInt(Math.random() * 10) % 3];
 };
 
@@ -10,19 +10,19 @@ const computerChoiceDisplay = document.getElementById("Computer-Hand");
 const resultDisplay = document.getElementById("Result");
 
 function playRound(player1, player2) {
-  // Define a function called playRound() that:
+  
   const player1Hand = player1.getHand();
   const player2Hand = player2.getHand();
   let winner = null;
 
   if (player1Hand === player2Hand) {
-    // Gets hands from each
+   
     resultDisplay.innerHTML = "It's a tie!";
-    return winner; // Returns the winner object (null if no winner)
+    return winner;
   } else if (player1Hand === 'rock' && player2Hand === 'paper') {
     winner = player2.name;
     resultDisplay.innerHTML = winner + " is the winner!";
-    return winner; // Returns the winner object (null if no winner)
+    return winner; 
   } else if (player2Hand === 'scissors') {
     winner = player1.name;
     resultDisplay.innerHTML = winner + " is the winner!";
