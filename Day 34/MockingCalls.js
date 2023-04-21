@@ -1,4 +1,4 @@
- // Create an array of user objects called users. Each user object should have an id, name, and email property.
+// Create an array of user objects called users. Each user object should have an id, name, and email property.
 const users = [
     { id: 1, name: 'Din Djarin', email: 'din.djarin@mandalorian.com' },
     { id: 2, name: 'Din Grogu', email: 'din.grogu@mandalorian.com' },
