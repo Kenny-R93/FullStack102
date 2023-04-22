@@ -7,8 +7,8 @@ Current Date, City from the zipcode, Current temperature in ferinheight, current
 // document.getElementById("Submit").addEventListener("click"); // should i use submit button? Where will data go?
 // document.getElementById("CurrentDate")
 
-const cityInput = document.getElementsByClassName("#CityZipcodeForm");
-const zipcodeInput = document.getElementsByClassName(".zipCodeInput");
+const cityInput = document.querySelector("#cityInput");
+const zipcodeInput = document.querySelector("#zipcodeInput");
 const currentDate = document.querySelector("#currentDate");
 const city = document.querySelector("#city");
 const temp = document.querySelector("#temp");
@@ -29,9 +29,11 @@ const APIKey = "d3bcabc4a44015d8efc8f427f4b4ba63"
 // Function to fetch City Data
 // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 function getWeatherDataCity(cityName) {
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey)
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + APIKey)
         .then((response) => response.json())
-        .then(data => displayWeather(data))
+        .then(cityData=> displayWeather(cityData))
+        // .catch(error) => {console.error("Error getting weather data", error);
+        // }
 }
 
 
@@ -39,18 +41,17 @@ function getWeatherDataCity(cityName) {
 // Function to fetch Zip Code Data
 // https://api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key}
 function getWeatherDataZipcode(zipCode) {
-    fetch("https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&appid=" + APIKey)
+    fetch("https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + "&units=imperial&appid=" + APIKey)
         .then((response) => response.json())
-        .then((data) => displayWeather(data))
-        // .catch(error) => {
-        //     console.error("Error getting weather data", error);
+        .then((zipcodeData) => displayWeather(zipcodeData))
+        // .catch(error) => {console.error("Error getting weather data", error);
         // }
     };
 
-// Function Retrieve Weather Data from API
+// Function to determine which API the User Input will pass through.
 function getWeather() {
-    const userInput = city.value;
-    if (userInput != isNaN) {
+    const userInput = cityInput.value;
+    if (isNaN(userInput)) {
         getWeatherDataCity(userInput);
     } else {
         getWeatherDataZipcode(userInput);
@@ -58,14 +59,14 @@ function getWeather() {
 }
 
 // EventListener Function for Form
-city.addEventListener("change", function() {
+cityInput.addEventListener("change", function() {
     getWeather();
 });
 
 //  Function to Display Weather Data
 function displayWeather(data) {
     const currentDate = document.getElementById("currentDate");
-    currentDate.innerHTML = new Date().toDateString(); //fix toDateString
+    currentDate.innerHTML = new Date().toDateString();
     city.innerText = data.name;
     temp.innerText = data.main.temp + "°F";
     currentConditions.innerText = data.weather[0].description;
