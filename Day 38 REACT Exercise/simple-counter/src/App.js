@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import SimCounter from './SimCounter';
+import Counter from "./Counter";
 
 function App() {
   return (
@@ -19,8 +19,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <Counter />
     </div>
   );
-}
+};
 
 export default App;
